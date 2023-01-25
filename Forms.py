@@ -1,23 +1,11 @@
-from wtforms import Form, StringField, EmailField, PasswordField, TextAreaField, validators
+from wtforms import Form, StringField, DateField, TextAreaField, validators #DateTimeLocalField
 
-class CreateUserForm(Form):
-    first_name = StringField('First Name', [validators.Length(min=1, max=150), validators.DataRequired()])
-    last_name = StringField('Last Name', [validators.Length(min=1, max=150), validators.DataRequired()])
-    email = StringField('Email', [validators.Length(min=1, max=150), validators.DataRequired()])
-    password = PasswordField('Password', [validators.Length(min=1, max=150), validators.DataRequired()])
-    phone = StringField('Telephone', [validators.Length(min=1, max=150), validators.DataRequired()])
-
-class LogInForm(Form):
-    email = EmailField('Email', [validators.Email(), validators.DataRequired()])
-    password = PasswordField('Password', [validators.Length(max=128), validators.DataRequired()])
-
-class AdminLogInForm(Form):
-    email = EmailField('Email', [validators.Email(), validators.DataRequired()])
-    password = PasswordField('Password', [validators.Length(max=128), validators.DataRequired()])
-
-class ContactUsForm(Form):
-    first_name = StringField('First Name', [validators.Length(min=1, max=150), validators.DataRequired()])
-    last_name = StringField('Last Name', [validators.Length(min=1, max=150), validators.DataRequired()])
-    email = EmailField('Email', [validators.Email(), validators.DataRequired()])
-    phone = StringField('Telephone', [validators.Length(min=8, max=8), validators.DataRequired()])
-    feedback = TextAreaField('Queries', [validators.Length(max=200), validators.DataRequired()])
+class PaymentForm(Form):
+    namec = StringField('NAME ON CARD', [validators.Length(min=1, max=150), validators.DataRequired()])
+    credit_card = StringField('CREDIT CARD NUMBER', [validators.Length(min=1, max=16), validators.DataRequired()])
+    exp_date = DateField('EXPIRY DATE', [validators.DataRequired()], format = '%Y-%m-%d',
+default='')
+    ccv = StringField('CCV', [validators.Length(min=1, max=3), validators.DataRequired()])
+    name = StringField('NAME', [validators.Length(min=1, max=150), validators.DataRequired()])
+   # collectdt = DateTimeLocalField('COLLECTION DATE & TIME',[validators.Optional()], format= '%Y-%m-%d %H:%M:%S')
+    remarks = TextAreaField('REMARKS', [validators.Optional()])
