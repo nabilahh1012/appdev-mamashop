@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Contact Form{% endblock %}
+
+{% block content %}
+
+<style>
+  .display{
+    text-align:center;
+    line-spacing: 50px;
+  }
+</style>
+
+<br>
+<h2 class="display">Thank you for contacting us!</h2>
+<h3 class="display">We will get back to you soon</h3>
+<br>
+<u><h4 class="display">Query Details:</h4></u>
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Contact Number</th>
+      <th>Remarks</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for customer in customers_list %}
+      <tr>
+        <td>{{ customer.get_first_name() }}</td>
+        <td>{{ customer.get_last_name() }}</td>
+        <td>{{ customer.get_email() }}</td>
+        <td>{{ customer.get_phone() }}</td>
+        <td>{{ customer.get_remarks() }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br><br><br>
+{% endblock %}

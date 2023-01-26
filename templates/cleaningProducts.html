@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Home{% endblock %}
+
+{% block content %}
+<br>
+
+<style>
+    .col-sm-3{
+        border: 3px outset lightgray;
+        background: #F5F5F5;
+        padding: 15px;
+        border-radius: 15px;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    .col-sm-3:hover{
+        background-color: darkgray;
+    }
+</style>
+
+<u><h2 class="nav justify-content-center">Cleaning Products</h2></u>
+<br>
+<div class="container-fluid text-center text-dark" style="background-color:clear;">
+    <div class="row">
+        <div class="col-sm-3 justify-content-center" style="background-color:clear;">
+           <a href=""><img src="static/img/tissue.jpg" alt="tissue" style="width:209px;"></a><br><br>
+            <u><b><h5 class="text-dark" style="size:18px">TISSUE</h5></b></u>
+            <h5 class="text-dark" style="size:18px">$4.00</h5>
+        </div>
+        <div class="col-sm-3" style="background-color:clear;">
+           <img src="static/img/dettol.png" alt="dettol" style="width:175px;"><br><br>
+          <u><b><h5 class="text-dark" style="size:18px">DETTOL</h5></b></u>
+             <h5 class="text-dark" style="size:18px">$6.00</h5>
+        </div>
+        <div class="col-sm-3" style="background-color:clear;">
+           <img src="static/img/febreeze.png" alt="febreeze" style="width:340px;"><br><br>
+          <u><b><h5 class="text-dark" style="size:18px">FEBREEZE</h5></b></u>
+            <h5 class="text-dark" style="size:18px">$5.00</h5>
+        </div>
+    </div>
+  </div>
+<br>
+{% endblock %}
