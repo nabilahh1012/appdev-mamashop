@@ -4,17 +4,10 @@
 {% block content %}
 <h1 class = "display-4">THANK YOU FOR PURCHASING WITH US!</h1>
 <div>
-    <table class="table table-striped">
+    <br>
     {% for user in user_list %}
-        <tr>
-            <th>NAME:</th>
-            <td>{{ user.get_name() }}</td>
-        </tr>
-        <tr>
-            <th>REMARKS:</th>
-            <td>{{ user.get_remarks() }}</td>
-        </tr>
+    <p><b>NAME: </b> {{ user.get_name() }}</p>
+    <p><b>REMARKS: </b> {{ user.get_remarks() }}</p>
     {% endfor %}
-    </table>
 </div>
 {% endblock %}
