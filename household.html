@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - Home{% endblock %}
+
+{% block content %}
+<br>
+<u><h2 class="nav justify-content-center"> Household </h2></u>
+<br><br>
+<div class="container-fluid text-center text-dark">
+    <div class="row">
+        <div class="col-sm-3" style="background-color:clear;">
+          <img src="static/img/hn.jpg" alt="home needs" style="width:180px;"><br><br>
+          <h5 style="size:18px">HOME NEEDS</h5>
+        </div>
+        <div class="col-sm-3" style="background-color:clear;">
+          <a href="/cleaningProducts"><img src="static/img/cp.jpg" alt="cleaning products" style=width:150px;"><br><br>
+          <h5 class = "text-dark" style="size:18px">CLEANING PRODUCTS</h5></a>
+        </div>
+        <div class="col-sm-3" style="background-color:clear;">
+          <img src="static/img/ci.jpg" alt="cooking items" style="width:300px;"><br><br>
+          <h5 style="size:18px">COOKING ITEMS</h5>
+        </div>
+        <div class="col-sm-3" style="background-color:clear;">
+            <img src="static/img/organizer.jpg" alt="organizers" style="width:270px;">
+              <h5 style="size:18px">ORGANIZERS</h5>
+        </div>
+    </div>
+  </div>
+<br><br>
+{% endblock %}

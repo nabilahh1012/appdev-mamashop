@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - Home{% endblock %}
+
+{% block content %}
+<!--<br xmlns="http://www.w3.org/1999/html">-->
+
+<style>
+    .box{
+        border: 3px outset lightgray;
+        background: #F5F5F5;
+        padding: 15px;
+        border-radius: 15px;
+        margin-right: 0px;
+        margin-left: -200px;
+    }
+
+    .row button{
+        color: darkgray;
+        background: white;
+        border-radius: 5px;
+
+    }
+
+    #container-fluid{
+        display: flex;
+    }
+
+
+<!--    .col-sm-3:hover{-->
+<!--        background-color: darkgray;-->
+<!--    }-->
+<!--</style>
+<br>
+<u><h2 class="nav justify-content-center"> Cleaning Products </h2></u>
+
+<br>
+
+<div id="container-fluid text-center text-dark" style="background-color:clear;">
+    <div class="row">
+        <div class="box justify-content-center" style="background-color:clear;">
+            <img src="static/img/tissue.jpg" alt="tissue" style="width:206.5px;"><br><br>
+            <div class="row">
+                <u><b><h5 class="text-dark" style="size:18px">TISSUE</h5></b></u>
+                <h5 class="text-dark" style="size:18px">$4.00</h5>
+                <p class="text-dark"><u><a href="/desc" class="text-dark">description</a></u></p>
+                <h5 class="text-dark" style="size:16px"><button><a href="/cart" class="text-dark">Add to Cart</a></button></h5>
+            </div>
+        </div>
+    </div>
+  </div>
+<br>
+{% endblock %}

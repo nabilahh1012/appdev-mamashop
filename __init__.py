@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from Forms import LogInForm, ContactUsForm, SignUpForm
+from Forms import LogInForm, ContactUsForm, SignUpForm, PaymentForm, PickUpForm
 import shelve, User, Contact
 
 app = Flask(__name__)
@@ -16,6 +16,10 @@ def household():
 @app.route('/cleaningProducts')
 def cleaning():
     return render_template('cleaningProducts.html')
+
+@app.route('/desc')
+def desc():
+    return render_template('desc.html')
 
 @app.route('/logIn', methods=['GET', 'POST'])
 def log_in():
@@ -101,7 +105,6 @@ def delete_customer(id):
 
     return redirect(url_for('retrieve_contact'))
 
-
 @app.route('/signUp', methods=['GET', 'POST'])
 def sign_up():
     sign_up_form = SignUpForm(request.form)
@@ -142,6 +145,96 @@ def retrieve_sign_up():
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
+#
+# @app.route('/cart')
+# def retrieve_cart():
+#     carts_dict = {}
+#     db = shelve.open('cart.db', 'r')
+#     carts_dict = db['Carts']
+#     db.close()
+#
+#     carts_list = []
+#     for key in carts_dict:
+#         cart = carts_dict.get(key)
+#         carts_list.append(cart)
+#
+#     return render_template('cart.html', count=len(carts_list), carts_list=carts_list)
+
+@app.route('/createPayment', methods=['GET', 'POST'])
+def create_payment():
+    create_payment_form = PaymentForm(request.form)
+    if request.method == 'POST' and create_payment_form.validate():
+        payments_dict = {}
+        db = shelve.open('payment.db', 'c')
+
+        try:
+            payments_dict = db['Payments']
+        except:
+            print("Error in retrieving Payments from payment.db.")
+
+        payment = User.Payment(create_payment_form.namec.data, create_payment_form.credit_card.data, create_payment_form.exp_date.data, create_payment_form.ccv.data, create_payment_form.name.data, create_payment_form.remarks.data)
+        payments_dict[payment.get_payment_id()] = payment
+        db['Payments'] = payments_dict
+        db.close()
+
+        return redirect(url_for('retrieve_payment'))
+    return render_template('createPayment.html', form=create_payment_form)
+
+@app.route('/retrievePayment')
+def retrieve_payment():
+    payments_dict = {}
+    db = shelve.open('payment.db','r')
+    payments_dict = db['Payments']
+    db.close()
+
+    payments_list = []
+    for key in payments_dict:
+        payment = payments_dict.get(key)
+        payments_list.append(payment)
+
+    return render_template('retrievePayment.html',count=len(payments_list), payments_list=payments_list)
+
+@app.route('/pickUp', methods=['GET', 'POST'])
+def pick_up():
+    pick_up_form = PickUpForm(request.form)
+    if request.method == 'POST' and pick_up_form.validate():
+        pickups_dict = {}
+        db = shelve.open('pickup.db', 'c')
+
+        try:
+            pickups_dict = db['Pickups']
+        except:
+            print("Error in retrieving Pickups from pickup.db.")
+
+        pickup = User.PickUp(pick_up_form.username.data, pick_up_form.phone.data, pick_up_form.location.data, pick_up_form.timing.data)
+        pickups_dict[pickup.get_pickup_id()] = pickup
+        db['Pickups'] = pickups_dict
+
+        db.close()
+
+        return redirect(url_for('retrieve_pickUp'))
+    return render_template('pickUp.html', form=pick_up_form)
+
+@app.route('/retrievepickUp')
+def retrieve_pickUp():
+    pickups_dict = {}
+    db = shelve.open('pickup.db','r')
+    pickups_dict = db['Pickups']
+    db.close()
+
+    pickups_list = []
+    for key in pickups_dict:
+        pickup = pickups_dict.get(key)
+        pickups_list.append(pickup)
+
+    return render_template('retrievePickup.html',count=len(pickups_list), pickups_list=pickups_list)
+
+# @app.route('/read')
+# def read():
+#     db = shelve.open('user.db', 'r')
+#     read = db['User']
+#     db.close()
+#     return render_template('home.html', read=read)
 
 if __name__ == '__main__':
     app.run()

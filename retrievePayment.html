@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - Retrieve Payment {% endblock %}
+
+{% block content %}
+<h1 class = "display-4">THANK YOU FOR PURCHASING WITH US!</h1>
+<div>
+    <br>
+    {% for payment in payments_list %}
+    <p><strong>NAME: </strong> {{ payment.get_name() }}</p>
+    <p><strong>REMARKS: </strong> {{ payment.get_remarks() }}</p>
+    {% endfor %}
+</div>
+<br><br><br><br><br>
+{% endblock %}

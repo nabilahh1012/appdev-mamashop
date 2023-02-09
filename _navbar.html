@@ -1,0 +1,45 @@
+<style>
+  .navbar-brand{
+    font-size: 20px;
+    font-weight: bold
+  }
+
+  .nav-link{
+    color: white;
+    font-size: 16.5px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">MAMA SHOP</a>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="/">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">LOCATION</a>
+            <ul class="dropdown-menu">
+<!--              <li><a class="dropdown-item" href="#">Map</a></li>-->
+              <li><a class="dropdown-item" href="/pickUp">Pick Up</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contactUs">CONTACT US</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">ACCOUNT</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/signUp">Sign Up</a></li>
+              <li><a class="dropdown-item" href="/logIn">Log In</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="/cart">
+            <img src="static/img/cart.jpg" alt="Cart" style="width:36px;" class="rounded-pill">
+          </a>
+        </li>
+    </ul>
+  </div>
+</nav>
+<br><br><br>

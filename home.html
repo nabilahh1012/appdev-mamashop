@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - Home{% endblock %}
+
+{% block content %}
+
+{% if 'user_created' in session %}
+<div class="alert alert-success alert-dismissible">
+    <div class="nav justify-content-center">
+    <strong>logged in to {{ session.pop ('user_created', None) }}'s account</strong>
+    <strong><button type="button" class="close" data-dismiss="alert">×</button></strong>
+    </div>
+</div>
+{% endif %}
+<br>
+<u><h2 class="nav justify-content-center">Choose Category</h2></u>
+<br>
+<div class="container-fluid text-center text-dark" style="background-color:clear;">
+    <div class="row">
+        <div class="col-sm-4" style="background-color:clear;">
+            <a href="/household"><img src="static/img/household.png" alt="household" style="width:300px;">
+          <h5 class="text-dark" style="size:18px">HOUSEHOLD</h5></a>
+        </div>
+        <div class="col-sm-4" style="background-color:clear;">
+            <img src="static/img/fv1.png" alt="fruits & vegetables" style="width:340px;"><br><br>
+          <h5 style="size:18px">FRUITS & VEGETABLES</h5>
+        </div>
+        <div class="col-sm-4" style="background-color:clear;">
+            <img src="static/img/frozen.png" alt="frozen" style="width:390px;"><br><br>
+          <h5 style="size:18px">FROZEN</h5>
+        </div>
+    </div>
+  </div>
+<br><br>
+  <div class="container-fluid text-center text-dark">
+        <div class="row">
+            <div class="col-sm-4" style="background-color:clear;">
+                <img src="static/img/dairy.png" alt="dairy" style="width:350px;"><br><br>
+              <h5 style="size:18px">DAIRY</h5>
+            </div>
+            <div class="col-sm-4" style="background-color:clear;">
+                <img src="static/img/snacks.png" alt="snacks" style="width:250px;"><br><br>
+                   <h5 style="size:18px">SNACKS</h5>
+            </div>
+            <div class="col-sm-4" style="background-color:clear;">
+                <img src="static/img/beverages.png" alt="beverages" style="width:380px;" >
+              <h5 style="size:18px">BEVERAGES</h5>
+            </div>
+        </div>
+  </div>
+
+{% endblock %}

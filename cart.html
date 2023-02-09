@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - CART{% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">My Cart</h1>
+
+<style>
+  .display{
+    text-align: center;
+    line-spacing: 50px;
+  }
+
+<!--  input .btn btn-primary{-->
+<!--    align: right;-->
+<!--    margin-left: 100px;-->
+<!--  }-->
+</style>
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>S/N</th>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>TISSUE</td>
+        <td>$4.00</td>
+      </tr>
+
+<!--    {% for cart in carts_list %}-->
+<!--      <tr>-->
+<!--        <td>{{ cart.get_cart_id() }}</td>-->
+<!--        <td>{{ cart.get_item() }}</td>-->
+<!--        <td>{{ cart.get_price() }}</td>-->
+<!--      </tr>-->
+<!--    {% endfor %}-->
+    </tbody>
+  </table>
+<!--      <a href="/createPayment"><input type="submit" value="CHECKOUT" class="btn btn-primary"></a>-->
+<!--  <a href="/createPayment"><button>CHECKOUT</button></a>-->
+  <a href=""></a>
+
+
+</div>
+<br><br><br>
+{% endblock %}
+

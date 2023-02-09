@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - Retrieve Pick Up{% endblock %}
+
+{% block content %}
+<h1 class = "display-4">This is your Location Form!</h1>
+<div>
+    <br>
+    {% for pickup in pickups_list %}
+    <p><strong>USERNAME: </strong> {{ pickup.get_username() }}</p>
+    <p><strong>CONTACT NUMBER: </strong> {{ pickup.get_phone() }}</p>
+    <p><strong>LOCATION: </strong> {{ pickup.get_location() }}</p>
+    <p><strong>TIMING: </strong> {{ pickup.get_timing() }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
