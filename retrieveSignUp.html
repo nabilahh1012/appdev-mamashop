@@ -7,9 +7,6 @@
     <thead>
     <tr>
       <th>User ID</th>
-<!--      <th>First Name</th>-->
-<!--      <th>Last Name</th>-->
-<!--      <th>Email</th>-->
       <th>USERNAME</th>
       <th>PASSWORD</th>
       <th>CONTACT NUMBER</th>
@@ -18,10 +15,6 @@
     <tbody>
     {% for signup in signups_list %}
       <tr>
-<!--        <td>{{ user.get_user_id() }}</td>-->
-<!--        <td>{{ user.get_first_name() }}</td>-->
-<!--        <td>{{ user.get_last_name() }}</td>-->
-<!--        <td>{{ user.get_email() }}</td>-->
         <td>{{ signup.get_username() }}</td>
         <td>{{ signup.get_password() }}</td>
         <td>{{ signup.get_phone() }}</td>

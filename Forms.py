@@ -37,3 +37,5 @@ class ProductForm(Form):
     quantity = IntegerField('Quantity', [validators.NumberRange(max=1), validators.DataRequired()])
     price = IntegerField('Price', [validators.NumberRange(max=1), validators.DataRequired()])
     total = IntegerField('Total', [validators.NumberRange(max=1), validators.DataRequired()])
+
+
