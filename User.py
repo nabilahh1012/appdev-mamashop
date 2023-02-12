@@ -149,3 +149,47 @@ class PickUp:
         return self.__timing
     def set_timing(self, timing):
         self.__timing= timing
+
+class Product:
+    count_id = 0
+
+    def __init__(self, name, quantity, price, total):
+        Product.count_id += 1
+        self.__product_id = Product.count_id
+        self.__name = name
+        self.__quantity = quantity
+        self.__price = price
+        self.__total = total
+    #
+    # def __init__(self, name, quantity, price, total):
+    #     Product.count_id += 1
+    #     self.__product_id = Product.count_id
+    #     self.__name = name
+    #     self.__quantity = quantity
+    #     self.__price = price
+    #     self.__total = total
+
+    def get_product_id(self):
+        return self.__product_id
+    def set_product_id(self, product_id):
+        self.__product_id = product_id
+
+    def get_name(self):
+        return self.__name
+    def set_name(self, name):
+        self.__name = name
+
+    def get_quantity(self):
+        return self.__quantity
+    def set_quantity(self, quantity):
+        self.__quantity = quantity
+
+    def get_price(self):
+        return self.__price
+    def set_price(self, price):
+        self.__price = price
+
+    def get_total(self):
+        return self.__total
+    def set_total(self, total):
+        self.__total = total

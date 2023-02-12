@@ -1,8 +1,12 @@
 {% extends "base.html" %}
-{% block title %}MAMA SHOP - Home{% endblock %}
+{% block title %}MAMA SHOP - Products{% endblock %}
 
 {% block content %}
+{% from "includes/_formHelper.html" import render_field %}
 
+<br>
+<u><h2 class="nav justify-content-center"> Cleaning Products </h2></u>
+<br>
 <style>
     .container{
       max-width: 1155px;
@@ -109,75 +113,49 @@
     }
 
 </style>
-<!--<style>-->
-<!--    .col-sm-3{-->
-<!--        border: 3px outset lightgray;-->
-<!--        background: #F5F5F5;-->
-<!--        padding: 15px;-->
-<!--        border-radius: 15px;-->
-<!--        margin-right: 50px;-->
-<!--        margin-left: 50px;-->
-<!--    }-->
+<style>
+    .col-sm-3{
+        border: 3px outset lightgray;
+        background: #F5F5F5;
+        padding: 15px;
+        border-radius: 15px;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
 
-<!--    .row button{-->
-<!--        color: darkgray;-->
-<!--        background: white;-->
-<!--        border-radius: 5px;-->
+    .row button{
+        color: darkgray;
+        background: white;
+        border-radius: 5px;
 
-<!--    }-->
+    }
 
-<!--    .row p{-->
-<!--        font-size: 20px;-->
-<!--        color: blue;-->
-<!--    }-->
+    .row p{
+        font-size: 20px;
+        color: blue;
+    }
 
 
-<!--&lt;!&ndash;    .col-sm-3:hover{&ndash;&gt;-->
-<!--&lt;!&ndash;        background-color: darkgray;&ndash;&gt;-->
-<!--&lt;!&ndash;    }&ndash;&gt;-->
-<!--&lt;!&ndash;</style>-->
-<br>
-<u><h2 class="nav justify-content-center"> Cleaning Products </h2></u>
+    .col-sm-3:hover{
+        background-color: darkgray;
+    }
+</style>
 
-<br>
-    <!-- Shop -->
-    <section class="shop container">
-      <!-- Content -->
-      <div class="shop-content">
-        <!-- Box 1 -->
-        <div class="product-box"><br>
-          <img src="static/img/tissue.jpg" class="product-img" alt="tissue" style="width:209px;"><br>
-          <h2 class="product-title">TISSUE</h2>
-          <h3 class="price">$4.00</h3>
-          <a href="/cart"><i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i></a>
-          <a class="desc" href="/desc" target="_blank">Description</a>
-        </div>
-        <!-- Box 2 -->
-        <div class="product-box"><br>
-          <img src="static/img/dettol.png" class="product-img" alt="dettol" style="width:180px;">
-          <h2 class="product-title">DETTOL</h2>
-          <h3 class="price">$6.00</h3>
-          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>
-          <a class="desc" href="#" target="_blank">Description</a>
-        </div>
-        <!-- Box 3 -->
-        <div class="product-box">
-          <img src="static/img/febreeze.png" class="product-img" alt="febreeze" style="width:360px;">
-          <h2 class="product-title">FEBREEZE</h2>
-          <h3 class="price">$5.00</h3>
-          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>
-          <a class="desc" href="#" target="_blank">Description</a>
-        </div>
-        <!-- Box 4  -->
-        <div class="product-box">
-          <img src="static/img/cif.png" class="product-img" alt="cif" style="width:198px;">
-          <h2 class="product-title">CIF</h2>
-          <h3 class="price">$2.00</h3>
-          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>
-          <a class="desc" href="#" target="_blank">Description</a>
-        </div>
-       </div>
-      </section>
+<form method="POST" action="">
+    <div class="form-group">
+        {{ render_field(form.name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.quantity, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.price, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.total, class="form-control") }}
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
 
 <!--    <div class="container">-->
 <!--        <div class="row">-->
@@ -196,6 +174,44 @@
 <!--            {% endfor %}-->
 <!--        </div>-->
 <!--    </div>-->
+    <!-- Shop -->
+<!--    <section class="shop container">-->
+<!--      &lt;!&ndash; Content &ndash;&gt;-->
+<!--      <div class="shop-content">-->
+<!--        &lt;!&ndash; Box 1 &ndash;&gt;-->
+<!--        <div class="product-box"><br>-->
+<!--          <img src="static/img/tissue.jpg" class="product-img" alt="tissue" style="width:209px;"><br>-->
+<!--          <h2 class="product-title">TISSUE</h2>-->
+<!--          <h3 class="price">$4.00</h3>-->
+<!--          <a href="/cart"><i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i></a>-->
+<!--          <a class="desc" href="/desc" target="_blank">Description</a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Box 2 &ndash;&gt;-->
+<!--        <div class="product-box"><br>-->
+<!--          <img src="static/img/dettol.png" class="product-img" alt="dettol" style="width:180px;">-->
+<!--          <h2 class="product-title">DETTOL</h2>-->
+<!--          <h3 class="price">$6.00</h3>-->
+<!--          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>-->
+<!--          <a class="desc" href="#" target="_blank">Description</a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Box 3 &ndash;&gt;-->
+<!--        <div class="product-box">-->
+<!--          <img src="static/img/febreeze.png" class="product-img" alt="febreeze" style="width:360px;">-->
+<!--          <h2 class="product-title">FEBREEZE</h2>-->
+<!--          <h3 class="price">$5.00</h3>-->
+<!--          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>-->
+<!--          <a class="desc" href="#" target="_blank">Description</a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Box 4  &ndash;&gt;-->
+<!--        <div class="product-box">-->
+<!--          <img src="static/img/cif.png" class="product-img" alt="cif" style="width:198px;">-->
+<!--          <h2 class="product-title">CIF</h2>-->
+<!--          <h3 class="price">$2.00</h3>-->
+<!--          <i class="fa-solid fa-cart-shopping add-cart" width="30px" height="30px"></i>-->
+<!--          <a class="desc" href="#" target="_blank">Description</a>-->
+<!--        </div>-->
+<!--       </div>-->
+<!--      </section>-->
 
 
 <!--<div class="container-fluid text-center text-dark" style="background-color:clear;">-->
@@ -225,5 +241,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--  </div>-->
-<br>
+
+
 {% endblock %}

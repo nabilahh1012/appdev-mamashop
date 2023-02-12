@@ -5,48 +5,118 @@
 <!--<br xmlns="http://www.w3.org/1999/html">-->
 
 <style>
-    .box{
-        border: 3px outset lightgray;
-        background: #F5F5F5;
-        padding: 15px;
-        border-radius: 15px;
-        margin-right: 0px;
-        margin-left: -200px;
-    }
+<!--    .box{-->
+<!--        border: 3px outset lightgray;-->
+<!--        background: #F5F5F5;-->
+<!--        padding: 15px;-->
+<!--        border-radius: 15px;-->
+<!--&lt;!&ndash;        margin-right: 0px;&ndash;&gt;-->
+<!--        margin-left: -200px;-->
+<!--    }-->
 
-    .row button{
-        color: darkgray;
-        background: white;
-        border-radius: 5px;
+<!--    .row button{-->
+<!--        color: darkgray;-->
+<!--        background: white;-->
+<!--        border-radius: 5px;-->
 
-    }
+<!--    }-->
 
-    #container-fluid{
-        display: flex;
-    }
+<!--    #container-fluid{-->
+<!--        display: flex;-->
+<!--    }-->
 
 
 <!--    .col-sm-3:hover{-->
 <!--        background-color: darkgray;-->
 <!--    }-->
-<!--</style>
+
+    .container{
+      max-width: 1155px;
+      margin: auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .product-box{
+      position: relative;
+      border: 1px solid darkgrey;
+      border-radius: 25px;
+      margin: 15px 5px;
+      background-color: white;
+    }
+
+    .product-box:hover{
+      box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.08);
+    }
+
+/*Single Product*/
+#prodetails{
+  display: flex; /*image and pro details will be 1 row*/
+  margin-top: 20px;
+  margin-left: 35px;
+}
+
+#prodetails .single-pro-image{
+  width: 40%;
+  margin: 5px 100px 5px 100px;
+}
+
+#prodetails .single-pro-details{
+<!--  width: 50%;-->
+  padding-top: 30px;
+  text-align: left;
+}
+
+#prodetails .single-pro-details h2{
+  padding: 40px 0 20px 0;
+  font-size: 30px; /*title*/
+}
+
+#prodetails .single-pro-details h3{
+  font-size: 25px; /*price*/
+  padding-bottom: 20px;
+}
+
+#prodetails .single-pro-details p{
+  padding-top: 10px;
+  line-height: 35px;
+  font-size: 22px;
+}
+</style>
 <br>
 <u><h2 class="nav justify-content-center"> Cleaning Products </h2></u>
-
 <br>
+        <!-- Shop -->
+    <section class="shop container">
+      <!-- Content -->
+      <div class="shop-content">
+        <section id="prodetails" class="padd">
+        <div class="single-pro-image">
+          <img src="static/img/tissue.jpg" width="250px" id="MainImg" alt="">
 
-<div id="container-fluid text-center text-dark" style="background-color:clear;">
-    <div class="row">
-        <div class="box justify-content-center" style="background-color:clear;">
-            <img src="static/img/tissue.jpg" alt="tissue" style="width:206.5px;"><br><br>
-            <div class="row">
-                <u><b><h5 class="text-dark" style="size:18px">TISSUE</h5></b></u>
-                <h5 class="text-dark" style="size:18px">$4.00</h5>
-                <p class="text-dark"><u><a href="/desc" class="text-dark">description</a></u></p>
-                <h5 class="text-dark" style="size:16px"><button><a href="/cart" class="text-dark">Add to Cart</a></button></h5>
-            </div>
         </div>
-    </div>
-  </div>
+        <div class="single-pro-details">
+          <h2>TISSUE</h2>
+          <h3>$4.00</h3>
+          <p><u><b>Description</b></u></p>
+            <p>Sold in a packet of 4.<br></p>
+        </div>
+      </section>
+      </div>
+    </section>
+
+<!--<div id="container-fluid text-center text-dark" style="background-color:clear;">-->
+<!--    <div class="row">-->
+<!--        <div class="box justify-content-center" style="background-color:clear;">-->
+<!--            <img src="static/img/tissue.jpg" alt="tissue" style="width:206.5px;"><br><br>-->
+<!--            <div class="row">-->
+<!--                <u><b><h5 class="text-dark" style="size:18px">TISSUE</h5></b></u>-->
+<!--                <h5 class="text-dark" style="size:18px">$4.00</h5>-->
+<!--                <p class="text-dark"><u><a href="/desc" class="text-dark">description</a></u></p>-->
+<!--                <h5 class="text-dark" style="size:16px"><button><a href="/cart" class="text-dark">Add to Cart</a></button></h5>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
 <br>
 {% endblock %}

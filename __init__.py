@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from Forms import LogInForm, ContactUsForm, SignUpForm, PaymentForm, PickUpForm
+from Forms import LogInForm, ContactUsForm, SignUpForm, PaymentForm, PickUpForm, ProductForm
 import shelve, User, Contact
 
 app = Flask(__name__)
@@ -142,23 +142,65 @@ def retrieve_sign_up():
 
     return render_template('home.html', count=len(users_list), users_list=users_list)
 
-@app.route('/cart')
-def cart():
-    return render_template('cart.html')
-#
 # @app.route('/cart')
-# def retrieve_cart():
-#     carts_dict = {}
-#     db = shelve.open('cart.db', 'r')
-#     carts_dict = db['Carts']
-#     db.close()
-#
-#     carts_list = []
-#     for key in carts_dict:
-#         cart = carts_dict.get(key)
-#         carts_list.append(cart)
-#
-#     return render_template('cart.html', count=len(carts_list), carts_list=carts_list)
+# def cart():
+#     return render_template('cart.html')
+
+@app.route('/createProduct', methods=['GET', 'POST'])
+def create_product():
+    create_product_form = ProductForm(request.form)
+    if request.method == 'POST' and create_product_form.validate():
+        products_dict = {}
+        db = shelve.open('product.db', 'c')
+
+        try:
+            products_dict = db['Products']
+        except:
+            print("Error in retrieving Products from product.db.")
+
+        product = User.Product(create_product_form.name.data, create_product_form.quantity.data, create_product_form.price.data, create_product_form.total.data)
+        # product = User.Product(create_product_form.name.data, create_product_form.quantity.data, create_product_form.price.data, create_product_form.total.data)
+        products_dict[product.get_product_id()] = product
+        db['Products'] = products_dict
+
+        # # Test codes
+        # products_dict = db['Products']
+        # product = products_dict[product.get_product_id()]
+        # print(product.get_name(), "was stored in product.db successfully with product_id ==", product.get_product_id())
+
+        db.close()
+
+        # session['product_created'] = product.get_name()
+        #
+        return redirect(url_for('retrieve_cart'))
+    return render_template('createProduct.html', form=create_product_form)
+
+@app.route('/retrieveCart')
+def retrieve_cart():
+    products_dict = {}
+    db = shelve.open('product.db', 'r')
+    products_dict = db['Products']
+    db.close()
+
+    products_list = []
+    for key in products_dict:
+        product = products_dict.get(key)
+        products_list.append(product)
+
+    return render_template('retrieveCart.html', count=len(products_list), products_list=products_list)
+
+@app.route('/deleteProduct/<int:id>', methods=['POST'])
+def delete_product(id):
+    products_dict = {}
+    db = shelve.open('product.db', 'w')
+    products_dict = db['Products']
+
+    products_dict.pop(id)
+
+    db['Products'] = products_dict
+    db.close()
+
+    return redirect(url_for('retrieve_cart'))
 
 @app.route('/createPayment', methods=['GET', 'POST'])
 def create_payment():
@@ -236,5 +278,10 @@ def retrieve_pickUp():
 #     db.close()
 #     return render_template('home.html', read=read)
 
+
+
+
+
 if __name__ == '__main__':
     app.run()
+

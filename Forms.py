@@ -32,3 +32,8 @@ class PickUpForm(Form):
     location = StringField('Location', [validators.DataRequired()])
     timing = StringField('Timing', [validators.DataRequired()])
 
+class ProductForm(Form):
+    name = StringField('Name', [validators.Length(min=5, max=25), validators.DataRequired()])
+    quantity = IntegerField('Quantity', [validators.NumberRange(max=1), validators.DataRequired()])
+    price = IntegerField('Price', [validators.NumberRange(max=1), validators.DataRequired()])
+    total = IntegerField('Total', [validators.NumberRange(max=1), validators.DataRequired()])

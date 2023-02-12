@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}MAMA SHOP - CART{% endblock %}
+
+{% block content %}
+
+<u><h1 class="display-4">My Cart</h1></u>
+<br>
+<div>
+  {% if count == 0 %}
+  <p>There are no products added.</p>
+  {% elif count == 1 %}
+  <p>There is 1 product in your cart.</p>
+  {% else %}
+  <p>There are {{ count }} products.</p>
+  {% endif %}
+</div>
+<style>
+  .display{
+    text-align: center;
+    line-spacing: 50px;
+  }
+
+  .cart-quantity{
+    border: 1px solid black;
+    outline-color: black;
+    width: 38.4px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+</style>
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>S/N</th>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products_list %}
+      <tr>
+        <td>{{ product.get_product_id() }}</td>
+        <td>{{ product.get_name() }}</td>
+        <td><input type="number" name="" value="1" class="cart-quantity"></input></td>
+<!--        <td>{{ product.get_quantity() }}</td>-->
+        <td>{{ product.get_price() }}</td>
+        <td>{{ product.get_total() }}</td>
+<!--        <td><a href="#" class="btn btn-warning">Update</a></td>-->
+        <td>
+          <form action="{{url_for('delete_product', id=product.get_product_id())}}" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{product.get_name()}}?');">
+            <!-- Button to Open the Modal -->
+<!--            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal {{product.get_product_id()}}">-->
+<!--              Delete-->
+<!--            </button>-->
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal_{{product.get_product_id()}}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Delete Confirmation</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+<!--                  &lt;!&ndash; Modal body &ndash;&gt;-->
+<!--                  <div class="modal-body">-->
+<!--                    Modal body..-->
+<!--                  </div>-->
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+      <div>
+         <a href="/createProduct"> <input type="submit" value="Continue Shopping" class="btn btn-warning"></a>
+         <a href="/createPayment"> <input type="submit" value="CHECKOUT" class="btn btn-primary"></a>
+      </div>
+</div>
+<br><br><br>
+{% endblock %}
+
